@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum - LearnEnrich</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-nav">
+        <div class="dashboard-nav-container">
+            <div class="nav-brand">
+                <img src="LearnEnrich Logo.png" alt="LearnEnrich" class="brand-logo">
+                <span class="brand-name">LearnEnrich</span>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">Student</span>
+                <div class="user-dropdown">
+                    <button class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" id="userMenu">
+                        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="assignments.html" class="sidebar-link">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                </a>
+                <a href="exams.html" class="sidebar-link">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Exams</span>
+                </a>
+                <a href="grades.html" class="sidebar-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Grades</span>
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+                <a href="career.html" class="sidebar-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Career Path</span>
+                </a>
+                <a href="discussion.html" class="sidebar-link active">
+                    <i class="fas fa-comments"></i>
+                    <span>Discussion</span>
+                </a>
+                <a href="notifications.html" class="sidebar-link">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="page-header">
+                <h1><i class="fas fa-comments"></i> Discussion Forum</h1>
+                <p>Connect with fellow students and instructors</p>
+            </div>
+
+            <!-- Forum Stats -->
+            <div class="forum-stats">
+                <div class="stat-card">
+                    <i class="fas fa-comments"></i>
+                    <div>
+                        <h3 id="totalTopics">245</h3>
+                        <p>Total Topics</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h3 id="activeMembers">1,842</h3>
+                        <p>Active Members</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3 id="onlineNow">127</h3>
+                        <p>Online Now</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Topic Button -->
+            <div class="forum-actions">
+                <button class="btn-primary" onclick="showNewTopicModal()">
+                    <i class="fas fa-plus"></i> New Topic
+                </button>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search discussions..." id="forumSearch">
+                </div>
+            </div>
+
+            <!-- Discussion Topics -->
+            <div id="discussionTopics" class="discussion-topics">
+                <!-- Populated by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- New Topic Modal -->
+    <div id="newTopicModal" class="modal" style="display: none;">
+        <div class="modal-overlay" onclick="closeNewTopicModal()"></div>
+        <div class="modal-container modal-large">
+            <div class="modal-header">
+                <h2>Create New Topic</h2>
+                <button class="modal-close" onclick="closeNewTopicModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Topic Title</label>
+                    <input type="text" id="topicTitle" placeholder="What's your question or discussion topic?">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="topicCategory">
+                        <option value="solar">Solar PV</option>
+                        <option value="wind">Wind Energy</option>
+                        <option value="general">General Discussion</option>
+                        <option value="technical">Technical Help</option>
+                        <option value="careers">Career Advice</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="topicMessage" rows="6" placeholder="Describe your topic in detail..."></textarea>
+                </div>
+                <button class="btn-primary btn-large" onclick="createNewTopic()">
+                    <i class="fas fa-paper-plane"></i> Post Topic
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="custom-modals.js"></script>
+    <script src="discussion.js"></script>
+</body>
+</html>

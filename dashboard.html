@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LearnEnrich</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-nav">
+        <div class="dashboard-nav-container">
+            <div class="nav-brand">
+                <img src="LearnEnrich Logo.png" alt="LearnEnrich" class="brand-logo">
+                <span class="brand-name">LearnEnrich</span>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">Student</span>
+                <div class="user-dropdown">
+                    <button class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" id="userMenu">
+                        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="assignments.html" class="sidebar-link">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                </a>
+                <a href="exams.html" class="sidebar-link">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Exams</span>
+                </a>
+                <a href="grades.html" class="sidebar-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Grades</span>
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+                <a href="career.html" class="sidebar-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Career Path</span>
+                </a>
+                <a href="discussion.html" class="sidebar-link">
+                    <i class="fas fa-comments"></i>
+                    <span>Discussion</span>
+                </a>
+                <a href="notifications.html" class="sidebar-link">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="page-header">
+                <h1 id="dashboardGreeting">Welcome back, <span id="dashboardGreetingName">Student</span>!</h1>
+                <p id="dashboardSubheading">Here's your personalized learning snapshot.</p>
+            </div>
+
+            <!-- Streak Card -->
+            <div class="streak-card">
+                <div class="streak-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="streak-info">
+                    <h3><span id="streakDays">0</span> Day Streak!</h3>
+                    <p>You're on fire! Keep learning every day</p>
+                </div>
+                <div class="streak-calendar">
+                    <div class="cal-day active"><i class="fas fa-check"></i></div>
+                    <div class="cal-day active"><i class="fas fa-check"></i></div>
+                    <div class="cal-day active"><i class="fas fa-check"></i></div>
+                    <div class="cal-day active"><i class="fas fa-check"></i></div>
+                    <div class="cal-day active"><i class="fas fa-check"></i></div>
+                    <div class="cal-day"><i class="fas fa-circle"></i></div>
+                    <div class="cal-day"><i class="fas fa-circle"></i></div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="enrolledCourses">0</h3>
+                        <p>Courses Enrolled</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="completedCourses">0</h3>
+                        <p>Courses Completed</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="pendingAssignments">0</h3>
+                        <p>Pending Assignments</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="certificatesEarned">0</h3>
+                        <p>Certificates Earned</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Learning -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Continue Learning</h2>
+                    <a href="courses.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div id="continueCoursesGrid" class="courses-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Upcoming Deadlines -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Upcoming Deadlines</h2>
+                    <a href="assignments.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div id="deadlinesList" class="deadlines-list">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="custom-modals.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

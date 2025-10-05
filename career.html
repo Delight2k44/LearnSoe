@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path - LearnEnrich</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Top Navigation -->
+    <nav class="dashboard-nav">
+        <div class="dashboard-nav-container">
+            <div class="nav-brand">
+                <img src="LearnEnrich Logo.png" alt="LearnEnrich" class="brand-logo">
+                <span class="brand-name">LearnEnrich</span>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">Student</span>
+                <div class="user-dropdown">
+                    <button class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" id="userMenu">
+                        <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="courses.html" class="sidebar-link">
+                    <i class="fas fa-book"></i>
+                    <span>My Courses</span>
+                </a>
+                <a href="assignments.html" class="sidebar-link">
+                    <i class="fas fa-tasks"></i>
+                    <span>Assignments</span>
+                </a>
+                <a href="exams.html" class="sidebar-link">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Exams</span>
+                </a>
+                <a href="grades.html" class="sidebar-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Grades</span>
+                </a>
+                <a href="certificates.html" class="sidebar-link">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certificates</span>
+                </a>
+                <a href="career.html" class="sidebar-link active">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Career Path</span>
+                </a>
+                <a href="discussion.html" class="sidebar-link">
+                    <i class="fas fa-comments"></i>
+                    <span>Discussion</span>
+                </a>
+                <a href="notifications.html" class="sidebar-link">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="page-header">
+                <h1>Career Pathways</h1>
+                <p>Explore career opportunities in renewable energy</p>
+            </div>
+
+            <!-- Career Readiness Score -->
+            <div class="career-readiness">
+                <div class="readiness-card">
+                    <div class="readiness-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="readiness-info">
+                        <h2>Career Readiness Score</h2>
+                        <div class="readiness-score">
+                            <div class="score-display" id="readinessScore">0%</div>
+                            <div class="score-bar">
+                                <div class="score-fill" id="readinessFill"></div>
+                            </div>
+                        </div>
+                        <p id="readinessMessage">Complete more courses to improve your career readiness</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Paths Grid -->
+            <div id="careerPathsGrid" class="career-paths-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Career Details Modal -->
+    <div id="careerModal" class="modal">
+        <div class="modal-overlay" onclick="closeCareerModal()"></div>
+        <div class="modal-container career-modal">
+            <div class="modal-header">
+                <h2 id="careerModalTitle">Career Details</h2>
+                <button class="modal-close" onclick="closeCareerModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="careerModalContent">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="custom-modals.js"></script>
+    <script src="career.js"></script>
+</body>
+</html>
